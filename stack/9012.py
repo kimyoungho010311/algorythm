@@ -1,20 +1,24 @@
-t = int(input())
+import sys
 
+t = int(sys.stdin.readline())
 
 for _ in range(t):
-  s = input().strip()
   stack = []
-  valid = True
+  s = sys.stdin.readline().strip()
 
   for ch in s:
     if ch == '(':
       stack.append(ch)
+      # print(stack)
     else:
-      if not stack:
-        valid = False
+      if len(stack) == 0:
+        print("NO")
         break
-      stack.pop()
-  if stack:
-    valid = False
-  
-  print("YES" if valid else "NO")
+      else:
+        stack.pop()
+        # print(stack)
+  else:
+    if len(stack) == 0:
+      print("YES")
+    else:
+      print("NO")
